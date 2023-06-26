@@ -1,4 +1,4 @@
-FROM openjdk:17
+FROM openjdk:8
 EXPOSE 8080
-ADD target/project.war project.war 
+ADD target/*.war /root/project.war 
 ENTRYPOINT ['java','-war','target/project.war']
