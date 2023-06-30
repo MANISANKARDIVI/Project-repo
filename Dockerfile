@@ -1,3 +1,5 @@
-FROM tomcat:8.5.90-jdk21-openjdk-slim
+FROM tomcat:8.0-alpine
+MAINTAINER manisankar.divi@gmail.com
 ADD target/project.war /usr/local/tomcat/webapps/
-ENTRYPOINT ["java","-war","/project.war"]
+EXPOSE 8080
+CMD ['catalina.sh', 'run']
