@@ -1,7 +1,7 @@
 FROM centos
 
 MAINTAINER manisankar.divi@gmail.com
-RUN sudo yum install default java -y
+RUN yum install default java -y
 RUN java --version
 RUN cd /opt
 
