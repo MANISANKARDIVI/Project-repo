@@ -1,9 +1,4 @@
 FROM tomcat:9.0.34
-
-RUN sed -i 's/8080/9090/' /usr/local/tomcat/conf/server.xml
-
-COPY target/project.war /usr/local/tomcat/webapps
-
-EXPOSE 9090
-
+RUN sed -i 's/port="8080"/port="4287"/' ${CATALINA_HOME}/conf/server.xml
+ADD ./target/project.war/ ${CATALINA_HOME}/webapps/
 CMD ["catalina.sh", "run"]
