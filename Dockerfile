@@ -1,19 +1,17 @@
 FROM centos
 
 MAINTAINER manisankar.divi@gmail.com
+RUN sudo yum install default java -y
+RUN java --version
+RUN cd /opt
 
-RUN mkdir /opt/tomcat/
-
-WORKDIR /opt/tomcat
-RUN curl -O https://www-eu.apache.org/dist/tomcat/tomcat-8/v8.5.40/bin/apache-tomcat-8.5.40.tar.gz
-RUN tar xvfz apache*.tar.gz
-RUN mv apache-tomcat-8.5.40/* /opt/tomcat/.
-RUN yum -y install java
-RUN java -version
-
-WORKDIR /opt/tomcat/webapps
-RUN curl -O -L https://github.com/AKSarav/SampleWebApp/raw/master/dist/SampleWebApp.war
-
+RUN wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.76/bin/apache-tomcat-9.0.76.tar.gz
+RUN sudo tar -xvzf apache-tomcat-9.0.76.tar.gz
+RUN mv apache-tomcat-9.0.76.tar.gz tomcat
+RUN cd /opt/tomcat
+COPY target/project.war /opt/tomcat/webapps/
+RUN cd /opt/tomcat/bin
+RUN sudo ./startup.sh
 EXPOSE 8080
 
 CMD ["/opt/tomcat/bin/catalina.sh", "run"]
