@@ -5,23 +5,23 @@ kind: Deployment
 metadata:
   name: projectdeployment
   labels: 
-    app: CICD-project
+    app: cicd-project
 spec:
   replicas: 2
   strategy:
     type: Recreate
   selector:
     matchLabels:
-      app: CICD-project
+      app: cicd-project
   template: 
     metadata:
-      name: CICD-projectpod
+      name: cicd-projectpod
       labels:
-        app: CICD-project
+        app: cicd-project
     spec: 
       containers: 
-      - name: CICD-projectcontainer
-        image: manisankardivi/CICD-project
+      - name: cicd-projectcontainer
+        image: manisankardivi/cicd-project
         ports: 
         - containerPort: 8080
 
@@ -30,11 +30,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: CICD-projectsvc
+  name: cicd-projectsvc
 spec:
   type: NodePort
   selector:
-    app: CICD-project
+    app: cicd-project
   ports:
   - port: 80
     targetPort: 8080
