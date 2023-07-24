@@ -1,0 +1,40 @@
+---
+# pod depolyment manifest
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: projectdeployment
+  labels: 
+    app: CICD-project
+spec:
+  replicas: 2
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: CICD-project
+  template: 
+    metadata:
+      name: CICD-projectpod
+      labels:
+        app: CICD-project
+    spec: 
+      containers: 
+      - name: CICD-projectcontainer
+        image: manisankardivi/CICD-project
+        ports: 
+        - containerPort: 8080
+
+---
+# pod deployment service
+apiVersion: v1
+kind: Service
+metadata:
+  name: CICD-projectsvc
+spec:
+  type: NodePort
+  selector:
+    app: CICD-project
+  ports:
+  - port: 80
+    targetPort: 8080
