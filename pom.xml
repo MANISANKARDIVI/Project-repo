@@ -41,11 +41,11 @@
         <version>8.0.33</version>
     </dependency>
     <!-- https://mvnrepository.com/artifact/org.sonarsource.sonarqube/sonar-plugin-api-impl -->
+    <!-- https://mvnrepository.com/artifact/org.sonarsource.scanner.maven/sonar-maven-plugin -->
     <dependency>
-        <groupId>org.sonarsource.sonarqube</groupId>
-        <artifactId>sonar-plugin</artifactId>
-        <version>9.9.3.79811</version>
-        <scope>test</scope>
+        <groupId>org.sonarsource.scanner.maven</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+        <version>3.10.0.2594</version>
     </dependency>
   </dependencies>
 
